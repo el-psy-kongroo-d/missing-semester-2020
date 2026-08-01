@@ -13,19 +13,19 @@ mkdir /tmp/missing                # create `missing` under /tmp
 man touch                         # touch: change file times; creates the file if missing
 
 # 4
-touch /tmp/missing/semester
+touch /tmp/missing/semester.sh
 
 # 5
-vi /tmp/missing/semester          # wrote the two lines
-                                  # editor-free way: echo '#!/bin/sh' > semester
+vi /tmp/missing/semester.sh          # wrote the two lines
+                                  # editor-free way: echo '#!/bin/sh' > semester.sh
                                   # (single quotes — ! expands history even in "double")
 
 # 6
-./semester                        # permission denied: kernel checks the x bit first,
-ls -l /tmp/missing/semester       # before even reading the shebang. -rw-r--r-- : no x
+./semester.sh                        # permission denied: kernel checks the x bit first,
+ls -l /tmp/missing/semester.sh       # before even reading the shebang. -rw-r--r-- : no x
 
 # 7
-sh /tmp/missing/semester          # works: what's executed is /bin/sh — semester is just
+sh /tmp/missing/semester.sh          # works: what's executed is /bin/sh — semester.sh is just
                                   # data (argv[1]), so it needs r, not x.
                                   # to sh, the #! line is only a comment
 
@@ -33,12 +33,12 @@ sh /tmp/missing/semester          # works: what's executed is /bin/sh — semest
 man chmod
 
 # 9
-chmod +x /tmp/missing/semester
-./semester                        # kernel accepts the exec now, sees #!, and reruns it
-                                  # as `/bin/sh ./semester` — the shebang automates ex 7
+chmod +x /tmp/missing/semester.sh
+./semester.sh                        # kernel accepts the exec now, sees #!, and reruns it
+                                  # as `/bin/sh ./semester.sh` — the shebang automates ex 7
 
 # 10  → ~/last-modified.txt
-sh /tmp/missing/semester \
+sh /tmp/missing/semester.sh \
 | grep 'last-modified' \
 | cut -d' ' -f2- \
 > ~/last-modified.txt
@@ -47,7 +47,7 @@ sh /tmp/missing/semester \
 # skipped — macOS has no /sys (sysfs is Linux-only)
 ```
 
-Artifact: [`semester`](./semester) (ex 4–9)
+Artifact: [`semester.sh`](./semester.sh) (ex 4–9)
 
 ## Notes
 
