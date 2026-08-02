@@ -1,0 +1,59 @@
+Vim practice drills — companion to:
+https://elpsykongrood.com/posts/vim-worth-knowing
+
+How to use: open this file in Vim and work top to bottom. Every drill
+uses only commands from the post. Nothing here matters — edit freely,
+quit with :q! (discard changes), and reopen to practice again.
+(Saved by accident? Reset with: git restore 03-editors/vim-practice.txt)
+
+==============================================================================
+1. MODES
+
+Press i, type a few words, press <Esc> to return to Normal mode.
+Press v, move around to grow the selection, press <Esc> again.
+Press V and watch it select whole lines, then <Esc> once more.
+Nothing to fix here — just feel the switches: Normal is home base.
+
+==============================================================================
+2. MOVING AROUND
+
+Using only h j k l, walk the cursor to this line's last letter.
+Use w to hop forward word by word across this whole sentence.
+Use b to hop back to the start, then e to land on each word's end.
+Press 0 and $ on this line to jump between start and end.
+    Press 0 then ^ on this line — leading spaces make them differ.
+Move to the line below, then press fz to reach its first z in one motion:
+lazy zebras zigzag at the zoo.
+Jump to the file's top with gg, its bottom with G, then back here.
+Scroll half a page down with Ctrl-d and back up with Ctrl-u.
+
+==============================================================================
+3. EDITING
+
+Delete the stray x characters with x:          Vixm is fuxn
+Cursor on the duplicated word, then dw:        the the quick brown fox
+Cursor on the misspelled word, then cw:        this wrod is misspelled
+Select this line with V, then press d — it does not belong here.
+Select the line below with V, yank it with y, then press p twice:
+this line wants to become three lines
+Press o to open a line below this one, type anything, then <Esc>.
+Press O to open a line above this one, type anything, then <Esc>.
+Press $ then a to append the missing period to this line
+Press u repeatedly to unwind your edits, then Ctrl-r to redo them.
+
+==============================================================================
+4. SEARCH AND REPLACE
+
+Type /banana and press Enter. Your own command is the first match —
+search again (press / then Enter) to reach the real one: banana
+Move to the line below, then type :s/teh/the/ — first match only:
+teh one, teh two
+Still on that line, press u, then :s/teh/the/g — every match this time.
+Fix every wrogn in the file at once with :%s/wrogn/wrong/g
+(the command line above holds two matches and changes too; expect
+five substitutions in total: wrogn wrogn here, and one more below)
+wrogn.
+
+==============================================================================
+Done. Leave with :q! so the drills stay broken for next time.
+(Kept your edits with :wq? See the reset command at the top.)
